@@ -33,6 +33,20 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	afx_msg void OnBtnClicked();
+
+public:
+	afx_msg void OnStnClickedNum1();
+	afx_msg void OnStnClickedNum2();
+	afx_msg void OnStnClickedNum3();
+	afx_msg void OnStnClickedNum4();
+	afx_msg void OnStnClickedNum5();
+	afx_msg void OnStnClickedNum6();
+	
 protected:
 	CString Num1;
+	CString Num2;
+	CString Num3;
+	CString Num4;
+	CString Num5;
+	CString Num6;
 };

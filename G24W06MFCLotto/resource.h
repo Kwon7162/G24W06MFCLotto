@@ -9,6 +9,11 @@
 #define IDR_MAINFRAME                   128
 #define IDC_BTN_GENERATE                1001
 #define IDC_NUM1                        1002
+#define IDC_NUM2                        1003
+#define IDC_NUM3                        1004
+#define IDC_NUM4                        1005
+#define IDC_NUM5                        1006
+#define IDC_NUM6                        1007
 
 // Next default values for new objects
 // 

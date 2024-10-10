@@ -53,14 +53,28 @@ END_MESSAGE_MAP()
 CG24W06MFCLottoDlg::CG24W06MFCLottoDlg(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_G24W06MFCLOTTO_DIALOG, pParent)
 	, Num1(_T(""))
+	, Num2(_T(""))
+	, Num3(_T(""))
+	, Num4(_T(""))
+	, Num5(_T(""))
+	, Num6(_T(""))
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
+
+	//TODO: srand 사용시 디버깅 과정시에는 100으로 잡아놓을것
+	//srand((unsigned)time(NULL));
+	srand(100);
 }
 
 void CG24W06MFCLottoDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
 	DDX_Text(pDX, IDC_NUM1, Num1);
+	DDX_Text(pDX, IDC_NUM2, Num2);
+	DDX_Text(pDX, IDC_NUM3, Num3);
+	DDX_Text(pDX, IDC_NUM4, Num4);
+	DDX_Text(pDX, IDC_NUM5, Num5);
+	DDX_Text(pDX, IDC_NUM6, Num6);
 }
 
 BEGIN_MESSAGE_MAP(CG24W06MFCLottoDlg, CDialogEx)
@@ -68,6 +82,12 @@ BEGIN_MESSAGE_MAP(CG24W06MFCLottoDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDC_BTN_GENERATE, &CG24W06MFCLottoDlg::OnBtnClicked)
+	ON_STN_CLICKED(IDC_NUM5, &CG24W06MFCLottoDlg::OnStnClickedNum5)
+	ON_STN_CLICKED(IDC_NUM6, &CG24W06MFCLottoDlg::OnStnClickedNum6)
+	ON_STN_CLICKED(IDC_NUM1, &CG24W06MFCLottoDlg::OnStnClickedNum1)
+	ON_STN_CLICKED(IDC_NUM3, &CG24W06MFCLottoDlg::OnStnClickedNum3)
+	ON_STN_CLICKED(IDC_NUM4, &CG24W06MFCLottoDlg::OnStnClickedNum4)
+	ON_STN_CLICKED(IDC_NUM2, &CG24W06MFCLottoDlg::OnStnClickedNum2)
 END_MESSAGE_MAP()
 
 
@@ -161,7 +181,45 @@ HCURSOR CG24W06MFCLottoDlg::OnQueryDragIcon()
 void CG24W06MFCLottoDlg::OnBtnClicked()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	//AfxMessageBox(L"버튼 클릭");
-	Num1 = "눌림";
+	CString num;
+	num.Format(L"%d", rand() % 45 + 1);
+
+	Num1 = num;
 	UpdateData(FALSE);
+}
+
+
+void CG24W06MFCLottoDlg::OnStnClickedNum5()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+}
+
+
+void CG24W06MFCLottoDlg::OnStnClickedNum6()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+}
+
+
+void CG24W06MFCLottoDlg::OnStnClickedNum1()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+}
+
+
+void CG24W06MFCLottoDlg::OnStnClickedNum3()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+}
+
+
+void CG24W06MFCLottoDlg::OnStnClickedNum4()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+}
+
+
+void CG24W06MFCLottoDlg::OnStnClickedNum2()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 }
