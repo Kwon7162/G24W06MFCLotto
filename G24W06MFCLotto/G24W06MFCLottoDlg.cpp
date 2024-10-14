@@ -52,29 +52,39 @@ END_MESSAGE_MAP()
 
 CG24W06MFCLottoDlg::CG24W06MFCLottoDlg(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_G24W06MFCLOTTO_DIALOG, pParent)
-	, Num1(_T(""))
-	, Num2(_T(""))
-	, Num3(_T(""))
-	, Num4(_T(""))
-	, Num5(_T(""))
-	, Num6(_T(""))
+
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 
 	//TODO: srand 사용시 디버깅 과정시에는 100으로 잡아놓을것
 	//srand((unsigned)time(NULL));
 	srand(100);
+	for (int i = 0; i < 6; i++) {
+		TextNum.Add(L"");
+	}
 }
 
-void CG24W06MFCLottoDlg::DoDataExchange(CDataExchange* pDX)
-{
+void CG24W06MFCLottoDlg::DoDataExchange(CDataExchange * pDX)
+	{
 	CDialogEx::DoDataExchange(pDX);
-	DDX_Text(pDX, IDC_NUM1, Num1);
-	DDX_Text(pDX, IDC_NUM2, Num2);
-	DDX_Text(pDX, IDC_NUM3, Num3);
-	DDX_Text(pDX, IDC_NUM4, Num4);
-	DDX_Text(pDX, IDC_NUM5, Num5);
-	DDX_Text(pDX, IDC_NUM6, Num6);
+
+	int Id[] = {
+	IDC_NUM1,
+	IDC_NUM2,
+	IDC_NUM3,
+	IDC_NUM4,
+	IDC_NUM5,
+	IDC_NUM6,
+	};
+	for (int i = 0; i < TextNum.GetCount(); i++) {
+		DDX_Text(pDX, Id[i], TextNum[i]);
+	}
+	//DDX_Text(pDX, IDC_NUM1, Num1);
+	//DDX_Text(pDX, IDC_NUM2, Num2);
+	//DDX_Text(pDX, IDC_NUM3, Num3);
+	//DDX_Text(pDX, IDC_NUM4, Num4);
+	//DDX_Text(pDX, IDC_NUM5, Num5);
+	//DDX_Text(pDX, IDC_NUM6, Num6);
 }
 
 BEGIN_MESSAGE_MAP(CG24W06MFCLottoDlg, CDialogEx)
@@ -195,12 +205,15 @@ void CG24W06MFCLottoDlg::OnBtnClicked()
 		AddWithInsertionSort(nums, n);
 	}
 
-	Num1.Format(L"%d", nums[0]);
-	Num2.Format(L"%d", nums[1]);
-	Num3.Format(L"%d", nums[2]);
-	Num4.Format(L"%d", nums[3]);
-	Num5.Format(L"%d", nums[4]);
-	Num6.Format(L"%d", nums[5]);
+	for (int i = 0; i < TextNum.GetCount(); i++) {
+		TextNum[i].Format(L"%d", nums[i]);
+	}
+	//Num1.Format(L"%d", nums[0]);
+	//Num2.Format(L"%d", nums[1]);
+	//Num3.Format(L"%d", nums[2]);
+	//Num4.Format(L"%d", nums[3]);
+	//Num5.Format(L"%d", nums[4]);
+	//Num6.Format(L"%d", nums[5]);
 
 	UpdateData(FALSE);
 

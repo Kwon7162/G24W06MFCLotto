@@ -34,14 +34,12 @@ protected:
 public:
 	afx_msg void OnBtnClicked();
 
-public:
-	
-	
 protected:
-	CString Num1;
+	CArray<CString, CString> TextNum;
+	/*CString Num1;
 	CString Num2;
 	CString Num3;
 	CString Num4;
 	CString Num5;
-	CString Num6;
+	CString Num6;*/
 };
