@@ -82,12 +82,6 @@ BEGIN_MESSAGE_MAP(CG24W06MFCLottoDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDC_BTN_GENERATE, &CG24W06MFCLottoDlg::OnBtnClicked)
-	ON_STN_CLICKED(IDC_NUM5, &CG24W06MFCLottoDlg::OnStnClickedNum5)
-	ON_STN_CLICKED(IDC_NUM6, &CG24W06MFCLottoDlg::OnStnClickedNum6)
-	ON_STN_CLICKED(IDC_NUM1, &CG24W06MFCLottoDlg::OnStnClickedNum1)
-	ON_STN_CLICKED(IDC_NUM3, &CG24W06MFCLottoDlg::OnStnClickedNum3)
-	ON_STN_CLICKED(IDC_NUM4, &CG24W06MFCLottoDlg::OnStnClickedNum4)
-	ON_STN_CLICKED(IDC_NUM2, &CG24W06MFCLottoDlg::OnStnClickedNum2)
 END_MESSAGE_MAP()
 
 
@@ -176,50 +170,38 @@ HCURSOR CG24W06MFCLottoDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
-
+static bool Contains(const CArray<int, int>& array, int n) {
+	for (int i = 0; i < array.GetCount(); i++) {
+		if (array[i] == n) {
+			return true;
+		}
+	}
+	return false;
+}
 
 void CG24W06MFCLottoDlg::OnBtnClicked()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	CString num;
-	num.Format(L"%d", rand() % 45 + 1);
+	CArray<int, int> nums;
 
-	Num1 = num;
+	int n = 0;
+
+	while (nums.GetCount() < 6) {
+		n = rand() % 44 + 1;
+		if (!Contains(nums, n))
+			nums.Add(n);
+	}
+
+	Num1.Format(L"%d", nums[0]);
+	Num2.Format(L"%d", nums[1]);
+	Num3.Format(L"%d", nums[2]);
+	Num4.Format(L"%d", nums[3]);
+	Num5.Format(L"%d", nums[4]);
+	Num6.Format(L"%d", nums[5]);
+
 	UpdateData(FALSE);
+
+	
 }
 
 
-void CG24W06MFCLottoDlg::OnStnClickedNum5()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-}
-
-
-void CG24W06MFCLottoDlg::OnStnClickedNum6()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-}
-
-
-void CG24W06MFCLottoDlg::OnStnClickedNum1()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-}
-
-
-void CG24W06MFCLottoDlg::OnStnClickedNum3()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-}
-
-
-void CG24W06MFCLottoDlg::OnStnClickedNum4()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-}
-
-
-void CG24W06MFCLottoDlg::OnStnClickedNum2()
-{
-	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-}
